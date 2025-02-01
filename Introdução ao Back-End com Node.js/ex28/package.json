@@ -1,0 +1,16 @@
+{
+  "name": "ex21",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev":"tsnd --respawn src/omit-pick-partial.ts"
+  },
+  "keywords": [],  
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.3"
+  }
+}
