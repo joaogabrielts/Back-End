@@ -1,0 +1,1 @@
+UPDATE students SET active = TRUE WHERE id = 3;
