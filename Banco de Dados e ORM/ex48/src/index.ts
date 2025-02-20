@@ -15,13 +15,13 @@ async function exampleController() {
   });
 
   console.log(response);
-  
-}
-/*
+  /*
     const response = await storeServices.createMany(["gabriel", "joão Gabriel"])
 
     console.log(response);
 */
+  
+}
 //exampleController();
 
 async function idController() {
@@ -29,7 +29,7 @@ async function idController() {
 
   console.log(response); 
 }
-idController()
+//idController()
 
 
 async function idControllerMany() {
@@ -37,8 +37,14 @@ async function idControllerMany() {
 
   console.log(response); 
 }
-idControllerMany()
+//idControllerMany()
 
+async function upadateStore(){
+const response = await storeServices.updateOne(1,{name: "Gabriel"})
+console.log(response);
+
+}
+upadateStore()
 /*
 contains - se assemelha ao LIKE do SQL, verificando se o valor fornecido está contido na coluna desejada.
 

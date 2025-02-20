@@ -1,4 +1,5 @@
 import { prisma } from "../database/prisma";
+import { TUpdateStoreBody } from "../interfaces/store.interface";
 
 export class StoreServices {
   async create(storeName: string) {
@@ -20,10 +21,15 @@ export class StoreServices {
 
   async findMany(search?: string, take = 10, skip = 0) {
     return await prisma.store.findMany({
-      where: search ? { name: { contains: search, mode: "insensitive" } ,} : {},
+      where: search ? { name: { contains: search, mode: "insensitive" } } : {},
       take,
-      skip: skip  // ship * take vai fazer ter pagina umm pagina 2 e assim pra frente
+      skip: skip, // ship * take vai fazer ter pagina umm pagina 2 e assim pra frente
     });
+  }
+
+  //update - updateMany
+  async updateOne(storeId: number, data: TUpdateStoreBody) {
+    return await prisma.store.update({ where: { id: storeId }, data: data });
   }
 }
 
