@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Store {
+  id       Int       @id @default(autoincrement())
+  name     String
+  products Product[]
+}
+
+model Product {
+  id          Int          @id @default(autoincrement())
+  name        String
+  description String?
+  price       Float
+  StorageInfo StorageInfo?
+  storeId     Int
+  categories Category[]
+  store       Store        @relation(fields: [storeId], references: [id], onDelete: Cascade)
+}
+
+model Category{
+    id          Int          @id @default(autoincrement())
+  products Product[]
+}
+
+model StorageInfo {
+  id        Int     @id @default(autoincrement())
+  stock     Int
+  productId Int     @unique
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+/*
+@relation(fields: [chaveNaTabela], references: [chaveDeReferencia], onDelete: Valor, onUpdate: Valor)
+
+Cascade - o registro relacionado irá ser excluído ou atualizado junto do registro principal. Este é o comportamento padrão para relacionamento N:N com Prisma.
+
+Restrict - haverá uma restrição de atualização e exclusão, o registro relacionado deverá ser atualizado ou excluído primeiro. Este é o comportamento padrão dos relacionamentos 1:1 e 1:N com Prisma.
+
+NoAction - as ações serão permitidas e nada irá acontecer.
+
+SetNull - o valor da coluna do registro relacionado será alterado para "null".
+
+SetDefault - o valor da coluna do registro relacionado será alterada para valor padrão determinado pelo desenvolvedor.
+*/
