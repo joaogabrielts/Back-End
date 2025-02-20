@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { ApplicationServices } from "../services/application.services";
 import { container } from "tsyringe";
+import { OpportunityServices } from "../services/opportunity.services";
 
 export class ApplicationControllers{
     async create(req: Request, res: Response){
@@ -12,7 +13,7 @@ export class ApplicationControllers{
     }
 
     async findMany(req: Request, res: Response){
-        const applicationServices = container.resolve(ApplicationServices);
+        const applicationServices =  container.resolve(ApplicationServices)
 
         const response = await applicationServices.findMany(Number(req.params.id));
 
