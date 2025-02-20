@@ -6,21 +6,26 @@ const storeServices = new StoreServices();
 
 const productServices = new ProductServices();
 
+async function createStore() {
+  const response = await storeServices.create("alex")
+  console.log(response);
+}
+//createStore()
+
 async function exampleController() {
   const response = await productServices.create({
-    name: "Game",
+    name: "celular",
     price: 2500,
     description: "game console",
-    storeId: 3,
+    storeId: 4,
   });
 
-  //console.log(response);
+  console.log(response);
   /*
     const response = await storeServices.createMany(["gabriel", "joão Gabriel"])
-
-    console.log(response);
 */
 }
+
 async function idController() {
   const response = await storeServices.findOne(3);
 
@@ -48,7 +53,12 @@ async function deleteOne() {
   console.log(response);
   
 }
-deleteOne()
+
+async function deleteMany() {
+  const response = await storeServices.deleteMany("alex")
+  console.log(response);
+}
+deleteMany()
 /*
 contains - se assemelha ao LIKE do SQL, verificando se o valor fornecido está contido na coluna desejada.
 

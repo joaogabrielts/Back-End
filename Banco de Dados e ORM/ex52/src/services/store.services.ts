@@ -31,6 +31,16 @@ export class StoreServices {
   async updateOne(storeId: number, data: TUpdateStoreBody) {
     return await prisma.store.update({ where: { id: storeId }, data: data });
   }
+
+  async deleteMany(storeName: string){
+    return await prisma.store.deleteMany({where:{name: storeName}})
+  }
+  /*
+  poderi utilizar tambem esse metedo pra exclyur todos os intens na lixeira
+  async deleteMany(){
+   return await prisma.post.deleteMany({ where: { onRecicle: true }});
+}
+  */
 }
 
 /* 
