@@ -7,7 +7,7 @@ export class UserControllers {
 
     const response = userServices.login();
 
-    return res.json(200).json(response);
+    return res.status(200).json(response);
   }
 
   getUser(req: Request, res: Response) {

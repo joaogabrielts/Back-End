@@ -9,3 +9,6 @@ const userControllers = new UserControllers()
 userRouter.post("/login", userControllers.login)
 
 userRouter.get("/", verifyToken.execute, userControllers.getUser)
+
+
+

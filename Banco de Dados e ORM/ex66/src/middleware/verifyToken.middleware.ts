@@ -5,6 +5,8 @@ import jwt from "jsonwebtoken";
 export class verifyToken {
   static execute(req: Request, res: Response, next: NextFunction) {
     const token = req.headers.authorization;
+   
+    
 
     if (!token) {
       throw new AppError("token is required", 401);
