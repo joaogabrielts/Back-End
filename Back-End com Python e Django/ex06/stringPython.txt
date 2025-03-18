@@ -1,0 +1,99 @@
+Sintaxe
+
+>>> mensagem = 'Olá, Python!'
+>>> outra_mensagem = "Eu sou uma string"
+
+>>> mensagem = "Eu disse: \"Olá, mundo!\""
+>>> mensagem
+'Eu disse: "Olá, mundo!"'
+
+>>> mensagem = """Este é um texto
+que ocupa várias
+linhas!!"""
+
+Interpolação
+
+>>> nome = 'Chrystian'
+>>> idade = 30
+>>> mensagem = f'Olá, meu nome é {nome} e eu tenho {idade} anos.'
+>>> mensagem
+'Olá, meu nome é João e eu tenho 30 anos.'
+
+>>> x = 10
+>>> y = 5
+
+>>> resultado = f'{x} + {y} = {x + y}'
+>>> resultado
+'10 + 5 = 15'
+
+Acessando Caracteres
+
+>>> mensagem = 'Olá, Python!'
+⁠>>> primeiro_caractere = mensagem[0]
+>>> primeiro_caractere
+'O'
+>>> ultimo_caractere = mensagem[-1]
+>>> ultimo_caractere
+'!'
+>>> penultimo_caractere = mensagem[-2]
+>>> penultimo_caractere
+'n'
+
+>>> fatia = mensagem[2:6]
+>>> fatia
+'á, P'
+
+# Faixa que começa no início da string e vai até o terceiro caractere (inclusive)
+>>> fatia = mensagem[:3]
+>>> fatia
+'Olá'
+
+# Faixa que começa no terceiro caractere e vai até o final da string
+>>> fatia = mensagem[2:]
+>>> fatia
+'á, Python!'
+
+Métodos
+upper(): converte todas as letras de uma string para maiúsculas.
+
+lower(): converte todas as letras de uma string para minúsculas.
+
+capitalize(): converte a primeira letra de uma string para maiúscula e as demais para minúsculas.
+
+title(): converte a primeira letra de cada palavra de uma string para maiúscula e as demais para minúsculas.
+
+strip(): remove espaços em branco do início e do final de uma string.
+
+replace(): substitui uma parte de uma string por outra.
+
+split(): divide uma string em uma lista de strings, usando um determinado delimitador.
+
+join(): junta uma lista de strings em uma única string, usando um determinado delimitador.
+
+find(): encontra a primeira ocorrência de uma substring em uma string e retorna o índice em que ela se encontra.
+
+count(): conta quantas vezes uma substring aparece em uma string.
+
+>>> mensagem = ' Olá, mundo! '
+
+# Remover os espaços em branco do início e do final da string
+>>> mensagem_limpa = mensagem.strip()
+>>> mensagem_limpa
+'Olá, mundo!'
+
+# Substituir "mundo" por "Python"
+>>> mensagem_nova = mensagem_limpa.replace('mundo', 'Python')
+>>> mensagem_nova
+'Olá, Python!'
+
+# Dividir a string em uma lista de palavras
+>>> palavras = mensagem_nova.split()
+>>> palavras
+['Olá,', 'Python!']
+
+# Juntar a lista de palavras em uma única string, usando um cifrão como delimitador
+>>> mensagem_final = '$'.join(palavras)
+>>> mensagem_final
+'Olá,$Python!'
+
+len(string)
