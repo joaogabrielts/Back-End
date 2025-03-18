@@ -1,0 +1,20 @@
+Listando pacotes (pip list)
+
+Instalação de Pacotes(pip install colorama)
+
+Desinstalação de pacotes(pip uninstall -y nome-do-pacote)
+
+Armazenando dependências em um arquivo(pip freeze > nome_do_arquivo.txt)
+
+Onde:
+
+pip freeze: faz a listagem das dependências instaladas em um formato válido para consumo posterior. Além disso, não retorna as dependências nativas do PIP.
+
+>: Sinal de "maior que", sinaliza que a saída do comando anterior deve ser adicionado em algum arquivo.
+
+nome_do_arquivo.txt: arquivo onde serão armazenados os pacotes retornados. Convecionalmente damos o nomeamos como requirements.txt.
+
+
+Instalando dependências a partir de um arquivo(pip install -r requirements.txt)
+
+-r: abreviação de --requirement, sinaliza que o que deve ser instalado está em um arquivo.
