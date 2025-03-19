@@ -1,0 +1,6 @@
+Função	O que faz?	Exemplo
+append()	Adiciona um item ao final de uma lista	lista.append(5) → [5]
+
+enumerate()	Retorna índice + valor dentro de um loop	enumerate("abc") → (0, 'a'), (1, 'b'), (2, 'c')
+
+char	Representa o caractere atual no loop	for char in "abc" → 'a', 'b', 'c'
