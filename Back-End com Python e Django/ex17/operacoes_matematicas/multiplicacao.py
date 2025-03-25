@@ -1,4 +1,4 @@
-from soma import somar
+from .soma import somar
 
 
 def multiplicador(a, b):
