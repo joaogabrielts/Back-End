@@ -39,7 +39,7 @@ print(minha_list_4[::])
 
 # pulando a list completa
 
-print(minha_list_4[::2])
+print('Pulando dois e dois', minha_list_4[::2])
 
 # ----------------------manipulando items ------------------
 
@@ -83,6 +83,8 @@ minha_list_alimento = ['melão', 'abacaxi', 'jabuticaba']
 
 minha_list.sort()
 minha_list_alimento.sort(key=len, reverse=True)
+print(minha_list)
+print(minha_list_alimento)
 
 #  key vai fazer comeca pela palavra menor,
 #  mas com o reverse=True vai trocar a ordem
