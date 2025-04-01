@@ -1,0 +1,6 @@
+# 1. - Atributo de classe
+# 2. - Método Inicializador com os parâmetros obrigatórios email e telefone
+# 3. - Atributos de instância. São declarados utilizando a palavra reservada self, sendo uma referência a instância atual, similar ao this de outras linguagens.
+
+
+O nome dos atributos atrelados ao self não precisam ser o mesmo dos parâmetros recebidos pelo inicializador, mas por convenção sempre procuramos deixá-los iguais.

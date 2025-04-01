@@ -1,4 +1,4 @@
-# raise Exception('Exceção levantada !!!')
+raise Exception('Exceção levantada !!!')
 
 
 def valor_positivo(v):
@@ -13,5 +13,5 @@ def somar_valores(a, b):
         valor_b = valor_positivo(b)
         print(valor_a, valor_b)
     except ValueError as error:
-        print(error.args)    
+        print(error.args)
     
