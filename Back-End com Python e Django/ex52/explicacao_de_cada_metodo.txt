@@ -1,0 +1,24 @@
+Exemplificando
+A biblioteca datetime é muito útil para trabalhar com informações de data e hora em Python. Ela oferece uma variedade de métodos e operações para manipular e formatar esses dados de maneira conveniente.
+
+strftime
+O método strftime em Python é um método de formatação de data e hora que pertence à classe datetime. Ele é usado para criar uma string representando a data e hora de acordo com um formato especificado.
+
+strptime
+O método strptime em Python é um método de parsing de data e hora que pertence à classe datetime. Ele é usado para criar um objeto datetime a partir de uma string representando a data e hora de acordo com um formato especificado.
+O método strptime é usado para converter uma string em um objeto datetime de acordo com um formato especificado usando códigos de formatação. Ele é útil quando você tem uma string representando a data e hora e deseja trabalhar com esses dados como um objeto datetime, o qual é muito mais simples de se realizar operações com data e tempo.
+
+----------------------------------------------------------------------------------------
+
+Operações matemáticas com datetime
+
+from datetime import datetime
+
+datetime_atual = datetime.now()
+datetime_atual + 1 
+
+ocorre esse erro :
+Traceback (most recent call last):
+  File "...main.py", line 114, in <module>
+    datetime.now() + 1
+ TypeError: unsupported operand type(s) for +: 'datetime.datetime' and 'int'
