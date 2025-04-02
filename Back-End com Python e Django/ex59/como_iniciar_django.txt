@@ -1,0 +1,27 @@
+1 - python -m venv venv
+
+2 - source venv/Scripts/activate | no git - source venv/bin/activate
+
+3 - pip install django
+
+4 - pip freeze > requirements.txt
+
+5 - django-admin startproject bandkamp .
+
+6 - python manage.py startapp musicians
+
+---------------------------------------------------
+
+criamos nosso apps (class) no models.py e depois vamos adiconar no settings.py na 
+parte de INSTALLED_APPS E COLOCAMOS o nome da pasta que nesse caso e musicians  
+
+_____________------------------------------------------------
+
+PRA FAZER A MIGRACÃO / Pra atualizar tambem utilizamos esse comando 
+
+1 - python manage.py makemigtations
+
+PRA ROTAR AS ROTAS 
+
+1 - python manage.py migrate
+
