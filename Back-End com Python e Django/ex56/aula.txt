@@ -1,0 +1,162 @@
+Introdução
+Em Python, os ambientes virtuais são usados para permitir que múltiplas versões de módulos e bibliotecas sejam instaladas de forma independente e sejam usadas de forma independente.
+
+Isso é útil quando você deseja ter várias versões de um módulo ou biblioteca instaladas, ou quando deseja ter certeza de que o código está sendo executado em um ambiente controlado e conhecido.
+
+Lembrando que todas as dependências instaladas no ambiente virtual não existirão globalmente, com exceção do pip e do setuptools.
+
+Nunca instale dependências complexas em ambiente global, isso pode acarretar conflitos com seu ambiente virtual.
+
+
+Configurando no Windows
+Como o Windows possui várias opções de terminais e, dependendo de qual você use, os comandos são diferentes, a teoria abordará os comandos tanto para o PowerShell quanto para o GitBash.
+
+PowerShell
+Se você utiliza PowerShell, é necessário habilitar a criação de um ambiente virtual. Para isso, siga os procedimentos abaixo:
+
+Abra o seu PowerShell em modo de administrador;
+
+Digite o comando:
+
+sql
+Copiar
+Editar
+Get-ExecutionPolicy
+Se você ainda não tiver configurado corretamente seu Windows para receber ambiente virtual, o retorno do comando acima será Restricted;
+
+Para configurar a política de execução corretamente, digite:
+
+javascript
+Copiar
+Editar
+Set-ExecutionPolicy AllSigned
+Digite S ou Y e pressione Enter para aceitar a opção que aparecerá;
+
+Digite novamente o comando Get-ExecutionPolicy e verifique se agora o retorno é AllSigned.
+
+Caso ainda não seja, reinicie seu computador e tente executar o comando Get-ExecutionPolicy novamente.
+
+
+GitBash
+Não é necessário fazer nenhuma configuração para habilitar a criação de um ambiente virtual.
+
+Desta forma, prossiga para os próximos tópicos.
+
+Criando um ambiente virtual
+O Python vem com um módulo nativo chamado venv, que nos fornece suporte para a criação de ambientes virtuais.
+
+Para fazer a criação do nosso ambiente virtual, use o comando no diretório raiz do projeto:
+
+nginx
+Copiar
+Editar
+python -m venv venv
+Explicação do comando
+python: estamos selecionando o Python que foi instalado globalmente.
+
+-m: estamos rodando um módulo do Python como se fosse um script.
+
+venv: nome do módulo que estamos rodando para fazer a criação do ambiente virtual.
+
+venv: nome da pasta que será criada e que conterá todo o nosso ambiente virtual.
+
+💡 Lembrando que, por boas práticas, colocamos o nome do módulo como nome da pasta, mas você pode colocar o que desejar.
+
+⚠️ Sempre temos que adicionar o diretório de ambiente virtual criado ao nosso .gitignore.
+
+Cada pessoa que for clonar nosso repositório para uso deve criar seu próprio ambiente e instalar os pacotes necessários.
+
+Ativação do Ambiente Virtual
+Para ativar o ambiente virtual, rode o comando abaixo no diretório principal do seu projeto (o que possui a pasta venv criada anteriormente):
+
+PowerShell
+Copiar
+Editar
+.\venv\Scripts\activate
+A primeira vez que esse comando for executado em seu sistema, um prompt de confirmação aparecerá.
+
+Você deverá selecionar a opção Executar Sempre.
+
+GitBash
+bash
+Copiar
+Editar
+source venv/Scripts/activate
+Verificando se a ativação foi bem-sucedida
+Após rodar o comando correspondente ao seu terminal, você pode verificar se a ativação foi bem-sucedida de duas formas:
+
+Pela indicação no terminal
+
+Se tudo deu certo, do lado do seu nome de usuário no terminal, deve aparecer o termo (venv).
+
+scss
+Copiar
+Editar
+(venv) chan@Endeavor ~/teoria:
+Verificando o caminho do Python
+
+Caso não exista a indicação visual (venv), você pode rodar o seguinte comando:
+
+PowerShell
+
+sql
+Copiar
+Editar
+Get-Command python
+GitBash
+
+bash
+Copiar
+Editar
+which python
+Esses comandos devem retornar o caminho para o Python que está sendo utilizado atualmente na sessão.
+
+Se deu tudo certo, o comando deve apontar para dentro do venv do seu projeto:
+
+diff
+Copiar
+Editar
+CommandType  Name         Version    Source
+-----------  ----         -------    ------
+Application  python.exe   3.11.3    ...\teoria\venv\Scripts\python.exe
+Desativação do Ambiente Virtual
+Para sair do ambiente virtual (venv), utilize o seguinte comando:
+
+nginx
+Copiar
+Editar
+deactivate
+Repare que o (venv) sumiu do lado do nome de usuário no terminal:
+
+css
+Copiar
+Editar
+chan@Endeavor ~/teoria:
+Dependências da Aplicação
+Com o venv ativado, para mostrar todos os pacotes instalados no ambiente atual no formato de texto, utilize o comando:
+
+pgsql
+Copiar
+Editar
+pip freeze
+Com a saída do comando pip freeze, é possível fazer a criação do nosso arquivo requirements.txt, que irá conter o nome e versão de todas as dependências da nossa aplicação:
+
+pgsql
+Copiar
+Editar
+pip freeze > requirements.txt
+💡 Toda vez que instalarmos um novo pacote em nosso ambiente virtual, não podemos esquecer de executar o comando pip freeze > requirements.txt, pois nosso arquivo de requerimentos não se atualiza sozinho.
+
+Instalando dependências a partir do requirements.txt
+Agora vamos supor que herdamos um projeto que já contenha o arquivo requirements.txt.
+
+Como faço para instalar as dependências dele?
+
+nginx
+Copiar
+Editar
+pip install -r requirements.txt
+⚠️ Tome sempre cuidado ao executar esse comando!
+
+Você deve estar com seu venv ativado, caso contrário, as dependências descritas em requirements.txt serão instaladas globalmente no seu sistema, o que pode acarretar conflitos ao utilizá-las localmente em projetos.
+
