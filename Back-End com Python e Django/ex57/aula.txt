@@ -1,0 +1,17 @@
+Linter: ferramenta que nos auxilia enquanto codamos, nos alertando sobre más práticas de código. Podemos citar como exemplo o Flake8.
+Formatter: ferramenta que formata nosso código, aplicando todas as convenções de código a serem seguidas, como indentação, espaçamento e estilo de código. Temos como exemplo o Black.
+Todos os linters e formatters têm como base o guia de estilo da linguagem específica, no caso do Python, a referência usada é a PEP 8.
+
+Configurando Black
+Você precisará baixar e instalar a extensão Black Formatter da Microsoft presente no VS Code. Após isso, você terá que adicionar algumas configurações no seu settings.json:
+
+Para acessar o arquivo em questão, pressione CTRL + SHIFT + P, na barra de busca escreva "Preferences: Open Settings (JSON)" ou "Preferências: Abrir Configurações (JSON)".
+
+ "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "python.formatting.provider": "none"
+  }
+
+Caso você deseje, a formatação automática do código pode ser habilitada acrescentando a seguinte linha no settings.json:
+
+"editor.formatOnSave": true
