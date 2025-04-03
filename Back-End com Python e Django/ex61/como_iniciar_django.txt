@@ -1,0 +1,76 @@
+1 - python -m venv venv
+
+2 - source venv/Scripts/activate | no git - source venv/bin/activate
+
+3 - pip install django
+
+4 - pip freeze > requirements.txt
+
+5 - django-admin startproject bandkamp .
+
+6 - python manage.py startapp musicians
+
+
+------------------------------------------------
+
+
+
+
+- Pra interagir com django - python manage.py shell
+
+- importa a model pro django - from musicans.models import Musician
+
+- Musician.objects -> aqui é o nome da class
+
+- criancao - musician = Musician(
+    chave= valor
+)
+
+- exemplo -> musician = Musician(first_name='Lucira', last_name='silva', instrument='piano')
+
+-buscra por filtro -> musician_filter = Musician.objects.filter(instrument='piano')
+ -utilizando get -> one_musician = Musician.objects.get(id=1)
+  -chmamando(one_musician.first_name)
+
+
+- musician.save()
+
+- pra chama só coloca o nome (musician)
+
+- pra pegas todos objects da list -> all_musicins = Musician.objects.all()
+- pra chama all_musicins
+
+- como chmama por indice all_musicins[0].last_name
+
+
+
+
+---------------------------------------------------
+
+criamos nosso apps (class) no models.py e depois vamos adiconar no settings.py na 
+parte de INSTALLED_APPS E COLOCAMOS o nome da pasta que nesse caso e musicians  
+
+_____________----------------------------------------------
+
+
+
+
+PRA FAZER A MIGRACÃO / Pra atualizar tambem utilizamos esse comando 
+
+1 - python manage.py makemigtations
+
+PRA ROTAR AS ROTAS 
+
+1 - python manage.py migrate
+
+------------------------_________________------------------------
+
+Pra atualizar um item 
+
+musician = Musician.objects.get(pk=1) -> pk é mesma coisa que id
+
+musician.instrument = 'guitarra'
+
+- Precisamos salva tambem 
+
+musician.save()
