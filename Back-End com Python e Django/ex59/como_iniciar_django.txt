@@ -25,3 +25,11 @@ PRA ROTAR AS ROTAS
 
 1 - python manage.py migrate
 
+--------------____________________--------------------------------------------
+
+instalação de django Rest Framework
+
+1 - pip install djangorestframework
+
+logo apos adicionamos  'rest_framework', no INSTALLED_APPS 
+
