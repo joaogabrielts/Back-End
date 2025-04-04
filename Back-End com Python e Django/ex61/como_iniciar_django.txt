@@ -13,8 +13,8 @@
 
 ------------------------------------------------
 
-
-
+instalação - pip install djangorestframework
+----------------------------------------------
 
 - Pra interagir com django - python manage.py shell
 
@@ -62,6 +62,8 @@ PRA FAZER A MIGRACÃO / Pra atualizar tambem utilizamos esse comando
 PRA ROTAR AS ROTAS 
 
 1 - python manage.py migrate
+
+para pega o link python manage.py runserver
 
 ------------------------_________________------------------------
 
