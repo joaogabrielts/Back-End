@@ -1,0 +1,5 @@
+Para capturar um valor na url usamos colchetes angulares ('<' e '>').
+
+Os valores capturados podem incluir, opcionalmente, uma categoria de conversor. Por exemplo, <int:id> para capturar um parâmetro inteiro. Se não especificarmos um conversor, o parâmetro será capturado por padrão em string.
+
+Associamos a URL a uma view que criaremos logo abaixo
