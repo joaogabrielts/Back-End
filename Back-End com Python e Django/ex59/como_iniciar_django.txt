@@ -19,7 +19,8 @@ _____________------------------------------------------------
 
 PRA FAZER A MIGRACÃO / Pra atualizar tambem utilizamos esse comando 
 
-1 - python manage.py makemigtations
+1 - python manage.py makemigrations
+
 
 PRA ROTAR AS ROTAS 
 

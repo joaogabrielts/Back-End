@@ -1,0 +1,21 @@
+# Abrindo o shell do Django
+$ python manage.py shell
+
+# Importando o serializer
+>>> from products.serializers import ProductSerializer
+
+# Caso 1: categoria válida
+>>> product_data = {"name": "Suco de Laranja", "category": "Drink", "price": "7.50"}
+>>> serializer = ProductSerializer(data=product_data)
+>>> serializer.is_valid()
+True
+
+# Caso 2: categoria inválida
+>>> product_data = {"name": "Suco de Laranja", "category": "Teste", "price": "7.50"}
+>>> serializer = ProductSerializer(data=product_data)
+>>> serializer.is_valid()
+False
+
+# Verificando o erro
+>>> serializer.errors
+{'category': [ErrorDetail(string='"Teste" is not a valid choice.', code='invalid_choice')]}
