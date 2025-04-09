@@ -1,0 +1,68 @@
+Adicionando novo app bios
+1-python manage.py startapp bios
+-----------------------------------------------------------------------------
+
+Persistindo a nova Model
+
+importante
+Não esqueça de adicionar o novo app aos INSTALLED_APPS do arquivo settings.py para que sua nova model seja reconhecida pelas migrações.
+
+Execute os comandos python manage.py makemigrations seguido de python manage.py migrate para reconhecer e persistir a nova tabela no banco db.sqlite3.
+
+1 - python manage.py makemigrations
+2 - python manage.py migrate
+
+-------------------------------------------------------------------------------------------------------
+
+Utilizando a shell do Django
+
+# Acessando a shell do Django
+1 - python manage.py shell
+
+exemplo de como fazer dentro do shell do django 
+
+# Na shell do Django:
+from musicians.models import Musician
+from bios.models import Bio
+
+# Criamos a instancia de Musician
+m1 = Musician(first_name="Jake", last_name="Bowen", instrument="Guitar")
+# Utilizando o save, persistimos o objeto na base de dados
+m1.save()
+
+# Criando o objeto de Bio
+b1 = Bio(author='Example Author', title='Some Bio Title 1', published_date='2001-06-15', musician=m1)
+# Persistindo o objeto no banco
+b1.save()
+
+-------------------------------------------------------------------------------------------------------
+
+O formato padrão de data aceita pelo Django segue o padrão ISO 8601, ou seja, YYYY-MM-DD.
+
+Utilize seu programa de interface (BeeKeeper, DBeaver) preferido para abrir o arquivo db.sqlite3 e executar a seguinte query:
+
+SELECT * FROM bios_bio;
+
+--------------------------------------------------------------------------------------------
+
+# Shell do Django
+from bios.models import Bio
+
+# Retorna uma lista de todas as bios do banco
+bio_obj_list = Bio.objects.all()
+
+# Coleta somente os dados referentes aos atributos de coluna da lista de objetos
+bio_obj_list.values()
+# <QuerySet [{'id': 1, 'author': 'Example Author', 'title': 'Some Bio Title 1', 'published_date': datetime.date(2001, 6, 15), 'musician_id': 1}]>
+
+m1.bio
+# <Bio: Bio object (1)>
+m1.bio.title
+# 'Some Bio Title 1'
+
+-------------------------------------------------------------------------
+
+b1.musician
+# <Musician: Musician object (1)>
+b1.musician.first_name
+# 'Jake'

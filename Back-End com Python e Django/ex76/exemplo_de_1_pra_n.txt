@@ -1,0 +1,29 @@
+importante 
+diferente do node que precisamos coloca coloca bio e albuns dentro de musicians, o django  ele já queria no automaticamente
+não é visivel mas o django criar !
+isso acontece em qualquer metodo seja 1 pra 1 , 1 pra n,  n pra n 
+--------------------------------------------------------------------
+1 - python manage.py startapp albums
+
+2 - manage.py makemigrations
+
+3 - python manage.py migrate
+
+------------------------------------------------------------------------------------------------
+
+acessando no terminal 
+
+1 - python manage.py shell 
+-----------------------------------------------------------------------------------------------
+exemplos da aula 
+
+ from musicians.models import Musician
+>>> from albuns.models import Album
+>>>
+>>> m1 = Musician.objects.create(first_name="Jake", last_name="Bowen", instrument="Guitar")
+>>> a1 = Album.objects.create(name="Isometric", musician=m1)
+>>> a1.musician.first_name
+'Jake'
+>>> m1.albums.all()   isso serve pra acessar todos os albums
+>>>  m1.albums.all()[0].name
+>>> m1.albums.create(name='P3') criando album
