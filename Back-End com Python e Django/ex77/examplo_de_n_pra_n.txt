@@ -1,0 +1,42 @@
+# Na shell do Django:
+from musicians.models import Musician
+from tags.models import Tag
+from albums.models import Album
+
+# Criando novo musico
+m1 = Musician.objects.create(first_name='John', 
+                            last_name='Frusciante', 
+                            instrument='Guitar')
+# Criando dois álbuns novos para o musico
+a1 = Album.objects.create(name='The Empyrean', musician=m1)
+a2 = Album.objects.create(name='Curtains', musician=m1)
+# Criando três tags sem associação
+t1 = Tag.objects.create(name='Experimental Rock')
+t2 = Tag.objects.create(name='Post Rock')
+t3 = Tag.objects.create(name='Alternative Rock')
+
+# Associando tags 1 e 2 com álbum 1
+a1.tags.add(t1)
+a1.tags.add(t2)
+a1.tags.all()
+# <QuerySet [<Tag: Tag object (1)>, <Tag: Tag object (2)>]>
+
+a1.tags.values()
+# <QuerySet [
+#              {'id': 1, 'name': 'Experimental Rock'},
+#              {'id': 2, 'name': 'Post Rock'}
+#             ]>
+
+# Associando tag 3 ao álbum 2
+a2.tags.add(t3)
+a2.tags.values()
+# <QuerySet [{'id': 3, 'name': 'Alternative Rock'}]>
+
+# Criando mais 2 tags sem associação
+t4 = Tag.objects.create(name='Pop')
+t5 = Tag.objects.create(name='Kpop')
+
+# Associando tag 4 e tag 5 ao álbum 2
+a2.tags.set([t4, t5])
+a2.tags.values()
+# <QuerySet [{'id': 4, 'name': 'Pop'}, {'id': 5, 'name': 'Kpop'}]>
