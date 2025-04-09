@@ -1,0 +1,10 @@
+Models
+São as classes que definem o esquema de seus dados em Django. Os modelos representam tabelas em sua base de dados sendo usados para definir as colunas (ou campos) e seus tipos.
+
+Views
+São as classes ou funções que controlam o que acontece quando um usuário envia uma solicitação HTTP para sua API. As views são responsáveis por realizar operações de leitura, escrita e atualização de dados, além de controlar a autenticação e autorização.
+
+Serializers
+São as classes que controlam a conversão de dados entre o formato Python e o formato de saída (como JSON). Eles são usados para serializar os dados de seus modelos para enviá-los como uma resposta HTTP e para desserializar os dados de uma solicitação HTTP para atualizar ou criar um modelo.
+
+Em resumo, os modelos são a representação de seus dados, as views controlam o que acontece quando uma solicitação é enviada e os serializers controlam a conversão de dados entre o Python e o formato de saída. Juntos, esses três componentes são usados para construir APIs REST completas e funcionais com DRF.
