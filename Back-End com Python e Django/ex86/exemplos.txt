@@ -1,0 +1,7 @@
+é so um campo de leitura, ent não podemos adiciona no shell((read_only=True))
+id = serializers.IntegerField(read_only=True)
+
+---------------------------------------------------------------------------
+
+agora quando quremos um campo só pra escrita (write_only=True)
+ password = serializers.CharField(write_only=True)
