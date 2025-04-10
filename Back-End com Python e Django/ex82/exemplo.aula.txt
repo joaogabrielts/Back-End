@@ -1,0 +1,94 @@
+📷 Imagem 1 - Inserção de dados inválidos
+
+account_dict = {
+    "email": "angela.com",
+    "age": True,
+    "sex": "feminino"
+}
+Dicionário com dados inválidos:
+
+email mal formatado
+
+age não é um número inteiro
+
+name está ausente (campo obrigatório)
+
+----------------------------------------------------------------------------
+
+serializer = AccountSerializer(data=account_dict)
+serializer.is_valid()
+Tenta validar os dados —
+Retorna: False (inválido)
+
+-------------------------------------------------------------------------
+
+serializer.errors
+Mostra os erros encontrados:
+
+'name': ['This field is required.'] → campo obrigatório ausente
+
+'email': ['Enter a valid email address.'] → formato inválido
+
+'age': ['A valid integer is required.'] → valor booleano não aceito
+
+---------------------------------------------------------------------
+
+serializer.validated_data
+Não retorna nada, pois os dados não foram validados com sucesso.
+
+-----------------------------------------------------------------------
+
+
+
+
+📷 Imagem 2 - Inserção de dados válidos com DRF Serializer
+from accounts.serializers import AccountSerializer
+from accounts.models import Account
+ 
+Importação do serializer e do model Account.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+account_dict = {
+    "name": "Angela",
+    "email": "angela@gmail.com",
+    "age": 22,
+    "sex": "feminino",
+    "extra_key": "extra_value"
+}
+Criação de um dicionário com dados da conta. Note que extra_key não faz parte do serializer/model — ele será ignorado.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+serializer = AccountSerializer(data=account_dict)
+Criação do serializer, passando os dados como argumento.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+serializer.validated_data
+Mostra os dados validados (sem extra_key, pois ela foi ignorada).
+Retorna: {'name': 'Angela', 'email': 'angela@gmail.com', 'age': 22, 'sex': 'feminino'}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+serializer.data
+Representação dos dados do serializer — igual ao validated_data.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Account.objects.create(**serializer.validated_data)
+Criação de um objeto no banco de dados usando os dados validados.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Account.objects.create(**serializer.data)
+Também cria o objeto, mas não é a forma recomendada. Melhor usar validated_data para garantir que os dados passaram pela validação.
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+>>> from accounts.serializers import AccountSerializer
+>>> from accounts.models import Account
+>>> account_obj = Account.objects.get(id=1)
+>>> account_obj
+<Account: Account object (1)>
+>>> serializer = AccountSerializer(account_obj)
+>>> serializer.data
+{'name': 'Angela', 'email': 'angela@gmail.com', 'age': 22, 'sex': 'feminino'}
