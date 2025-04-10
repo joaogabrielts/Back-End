@@ -6,4 +6,3 @@ class Account(models.Model):
     email = models.EmailField()
     age = models.IntegerField()
     sex = models.CharField(max_length=255)
-
