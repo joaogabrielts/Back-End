@@ -1,0 +1,47 @@
+Tipo de relação	Campo Django	Direção
+1 para 1	OneToOneField	Um para Um
+1 para N	ForeignKey	Muitos para Um
+N para N	ManyToManyField	Muitos para Muitos
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+EXEMPLO DO SHELL DJANGO'
+
+# Shell do Django
+from accounts.models import Account, Address
+from accounts.serializers import AccountSerializer
+
+account_data = {
+  "name": "Angela",
+  "email": "angela@gmail.com",
+  "age": 22,
+  "sex": "feminino"
+}
+
+address_data = {
+  "street": "Rua das Flores",
+  "house_number": "78",
+  "city": "Curitiba",
+  "zip_code": "06285-896"
+}
+
+# Criação dos objetos
+account = Account.objects.create(**account_data)
+address = Address.objects.create(user=account, **address_data)
+
+# Criação e utilização do serializer
+serializer = AccountSerializer(account)
+serializer.data
+# {
+#   'name': 'Angela',
+#   'email': 'angela@gmail.com',
+#   'age': 22,
+#   'sex': 'feminino',
+#   'addresses': [
+#     OrderedDict([
+#       ('street', 'Rua das Flores'),
+#       ('house_number', '78'),
+#       ('city', 'Curitiba'),
+#       ('zip_code', '06285-896')]
+#     )]
+# }
