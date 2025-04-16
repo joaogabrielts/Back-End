@@ -1,0 +1,102 @@
+Para acompanhar a teoria, basta ter o esqueleto de um projeto, não iremos adicionar nenhum app. Para facilitar, execute a sequência de comandos a seguir no seu terminal para não perder tempo:
+
+mkdir 1-user_model
+cd 1-user_model
+python -m venv venv
+source venv/bin/activate
+pip install django ipython
+django-admin startproject project .
+
+===================================================================================================
+
+
+Utilização
+O suporte à autenticação é empacotado como um módulo contrib do Django em django.contrib.auth. Por padrão, a configuração necessária já está incluída em nosso INSTALLED_APPS de settings.py sendo gerada quando rodamos django-admin startproject, então não precisamos nos preocupar em instalar nada.
+
+Além disso, configurações padrões também são geradas no MIDDLEWARE de settings.py:
+
+SessionMiddleware - gerencia sessões entre solicitações.
+AuthenticationMiddleware - associa usuários a solicitações usando sessões.
+
+===================================================================================================
+
+Criando usuários pela shell
+
+# shell do Django
+from django.contrib.auth.models import User
+
+# Perceba que usamos create_user como método para user comum
+user = User.objects.create_user(
+    username="joao", email="joao@gmail.com", password="1234"
+)
+
+user.username
+# 'joao'
+
+# Perceba que foi feito o hash da senha automaticamente
+user.password
+# 'pbkdf2_sha256$320000$zXBx3MhyzYqvDaIsXATg3Y$F9svPo/tP6PEYj3vwg3QylqVVVUulqyEZL4rn5wbhQ0='
+
+user.is_superuser
+# False
+user.is_staff
+# False
+
+# Utilizando create_superuser para admin
+user_admin = User.objects.create_superuser(
+  username='chrystian', password='0303'
+)
+
+user_admin.is_superuser
+# True
+user_admin.is_staff
+# True
+==============tem como ver todo os usuários no auth_user no banco de dados========================
+
+Criando super usuário pelo CLI do Django
+
+python manage.py createsuperuser
+
+Algumas perguntas serão feitas a respeito da criação do superusuário, no exemplo abaixo, estamos criando um superusuário lucira com password 'abcd'.
+
+O Django não mostra a senha digitada no terminal como medida protetiva. Observe que não é preciso passar o email, posso pular com Enter. Os únicos atributos obrigatórios são username e password:
+
+Trivia!
+Observe que no gif anterior, o próprio Django nos avisou que o password abcd é fraco por ser curto (<8) e comum (sequência de letras do alfabeto). Isso acontece, pois o próprio Django também já vem com sistemas de verificação de força de password, eles podem ser encontrados em settings.py na constante AUTH_PASSWORD_VALIDATORS.
+
+
+=========================================================================
+
+Alterando senhas
+# shell do Django
+from django.contrib.auth.models import User
+
+lucira = User.objects.get(username='lucira')
+
+# Se fizer dessa forma, a senha será guardada em formato bruto no banco
+# lucira.password = 'nova_senha_1234@'
+
+# A boa prática é utilizar set_password
+lucira.set_password('nova_senha_1234@')
+lucira.save()
+
+=============================================================
+Autenticação de usuários
+
+# shell do Django
+from django.contrib.auth import authenticate
+
+user = authenticate(username='lucira', password='nova_senha_1234@')
+
+if user:
+  print('Usuário autenticado com sucesso')
+else:
+  print('Usuário ou senha inválidos')
+# 'Usuário autenticado com sucesso'
+
+user = authenticate(username='lucira', password='senha_errada')
+if user:
+  print('Usuário autenticado com sucesso')
+else:
+  print('Usuário ou senha inválidos')
+# 'Usuário ou senha inválidos'
